@@ -6,7 +6,8 @@
       const file = fileInput.files[0];
       if (file) {
         const objectUrl = URL.createObjectURL(file);
-        playerDiv.innerHTML = <video controls width="400" height="300" src="${objectUrl}"></video>;
+        playerDiv.innerHTML = <video controls width="400" height="300" src="${objectUrl}">;
+          </video>
       }
     }
 
