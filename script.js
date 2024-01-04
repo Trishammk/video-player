@@ -16,7 +16,7 @@
       if (url) {
         const videoId = extractVideoId(url);
         if (videoId) {
-          playerDiv.innerHTML = <iframe width="400" height="300" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>;
+          playerDiv.innerHTML = <iframe width="400" height="300" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen>/iframe>;
         } else {
           console.error('Invalid YouTube URL');
         }
