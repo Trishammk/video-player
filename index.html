@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Media Player</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+
+    #player {
+      width: 400px;
+      margin: 20px auto;
+    }
+
+    #fileInput, #urlInput {
+      width: 80%;
+      padding: 8px;
+      margin-bottom: 10px;
+    }
+
+    #controls {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="player"></div>
+
+  <input type="file" id="fileInput" accept="audio/*,video/*">
+  <input type="text" id="urlInput" placeholder="Paste YouTube video URL">
+
+  <div id="controls">
+    <button onclick="playFile()">Play File</button>
+    <button onclick="playUrl()">Play YouTube Video</button>
+  </div>
+
+  <script>
+    const playerDiv = document.getElementById('player');
+    const fileInput = document.getElementById('fileInput');
+    const urlInput = document.getElementById('urlInput');
+
+    function playFile() {
+      const file = fileInput.files[0];
+      if (file) {
+        const objectUrl = URL.createObjectURL(file);
+        playerDiv.innerHTML = <video controls width="400" height="300" src="${objectUrl}"></video>;
+      }
+    }
+
+    function playUrl() {
+      const url = urlInput.value;
+      if (url) {
+        const videoId = extractVideoId(url);
+        if (videoId) {
+          playerDiv.innerHTML = <iframe width="400" height="300" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>;
+        } else {
+          console.error('Invalid YouTube URL');
+        }
+      }
+    }
+
+    function extractVideoId(url) {
+      const match = url.match(/[?&]v=([^?&]+)/);
+      return match && match[1];
+    }
+  </script>
+</body>
+</html>
