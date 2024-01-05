@@ -2,7 +2,7 @@
     const fileInput = document.getElementById('fileInput');
     const urlInput = document.getElementById('urlInput');
 
-    function playFile() {
+    function playfilelink() {
       const file = fileInput.files[0];
       if (file) {
         const objectUrl = URL.createObjectURL(file);
@@ -11,7 +11,7 @@
       }
     }
 
-    function playUrl() {
+    function nowurl() {
       const url = urlInput.value;
       if (url) {
         const videoId = extractVideoId(url);
